@@ -14,12 +14,10 @@ Picton_blue = (63, 217, 255)
 Button_blue = (31, 151, 231)
 Plump_purple = (88, 69, 177)
 
-def mix_colors(color1, color2, mix_factor):
-    """Interpolate between two colors."""
-    return tuple(
-        round(color1[i] * (1 - mix_factor) + color2[i] * mix_factor)
-        for i in range(3)
-    )
+def mix_colors(color1, color2, weight):
+    return (color1[0] * (1 - weight) + color2[0] * weight,
+            color1[1] * (1 - weight) + color2[1] * weight,
+            color1[2] * (1 - weight) + color2[2] * weight)
 
 if len(sys.argv) == 2 and sys.argv[1] == 'off':
     leds.fill((0, 0, 0))
